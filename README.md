@@ -9,7 +9,25 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 # Front-GoDestiny
 El Font del proyecto de ingeniera, replicación de funcionalidades de un intermediario entre pasajeros y conductores 
 
-Nota:
+# Notas
 Al realizar una copia ingresar en la terminal
 npm install
 npm install vuetify
+npm install pinia
+npm install vue-router
+npm install vee-validate
+
+# Añadir en el main.js
+
+// Vuetify
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+
+const vuetify = createVuetify({
+  components,
+  directives,
+})
+
+createApp(App).use(vuetify).mount('#app')
