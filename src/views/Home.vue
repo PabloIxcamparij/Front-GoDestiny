@@ -4,7 +4,7 @@
 
     <v-btn elevation="4" class="opDriver">
       <div class="button-content">
-        <img src="/Conductor.svg" class="imgOpcion"/>
+        <img src="/Conductor.svg" class="imgOpcion"  :to="{ name: 'registroConductor'}"/>
         <h3>Empezar A Conducir</h3>
       </div>
       
@@ -28,8 +28,9 @@
 
 .homeMenu {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 2vw;
+  gap: 20px;
 }
 
 .imgOpcion{
@@ -37,7 +38,7 @@
 }
 
 .opPassenger {
-  width: 50%;
+  width: 100%;
   height: 35vw;
   background-color:  #d6f3de;
   display: flex;
@@ -49,7 +50,7 @@
 }
 
 .opDriver {
-  width: 50%;
+  width: 100%;
   height: 35vw;
   background-color:   #829acb;
 }

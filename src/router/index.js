@@ -10,15 +10,24 @@ const router = createRouter({
     routes: [
       {
         path: '/',
+        name: 'login',
+        component: Login
+      },
+      {
+        path: '/home',
         name: 'home',
         component: Home
       },
       {
-        path: '/login',
-        name: 'login',
-        component: Login
-      }, 
-  
+        path: '/RegistroUsuario',
+        name: 'registroUsuario',
+        component: () => import('../views/RegistroUsuario.vue'),
+      },
+      {
+        path: '/RegistroConductor',
+        name: 'registroConductor',
+        component: () => import('../views/RegistroConductor.vue'),
+      },  
     ]
   }) 
 
