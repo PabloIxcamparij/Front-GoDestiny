@@ -1,0 +1,109 @@
+.background-image-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .background-image {
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .container-loginInfo {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    z-index: 2;
+
+  }
+  
+  .btn-login,
+  .btn-ingresar {
+    background-color: #93ddaa;
+    margin-bottom: 2%;
+  }
+  
+  .btn-login:hover,
+  .btn-ingresar:hover {
+    background-color: #2e3d43;
+    color: white;
+  }
+  
+  .labelRegistro {
+    width: 60%;
+    margin: 0 auto;
+  }
+  
+  .subTitleRegistro {
+    margin-right: 80%;
+  }
+  
+  .btn-registro {
+    margin-top: -1%;
+  }
+  
+  .contenedor-btnSolicitar {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin: 0 auto;
+  }
+  
+  .contenedor-btn {
+    width: 60%;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 780px) {
+    .labelRegistro,
+    .contenedor-btnSolicitar,
+    .contenedor-btn {
+      width: 90%;
+    }
+    
+    .contenedor-btn {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .container-loginInfo {
+      padding: 10px;
+    }
+  
+    .text-h4 {
+      font-size: 1.5rem;
+    }
+  
+    .text-h6 {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media (min-width: 781px) and (max-width: 1200px) {
+    .labelRegistro,
+    .contenedor-btnSolicitar,
+    .contenedor-btn {
+      width: 75%;
+    }
+    
+    .container-loginInfo {
+      padding: 15px;
+    }
+  
+    .text-h4 {
+      font-size: 2rem;
+    }
+  
+    .text-h6 {
+      font-size: 1.5rem;
+    }
+  }
+  

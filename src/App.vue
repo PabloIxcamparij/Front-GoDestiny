@@ -18,6 +18,10 @@ const showLoginButton = computed(() => route.name === 'login' || route.name === 
                     <v-btn :to="{ name: 'login' }" v-if="showLoginButton">
                         Iniciar Sesión
                     </v-btn>
+
+                    <v-btn :to="{ name: 'login' }" v-if="!isAuthRoute">
+                        Cerrar Sesión
+                    </v-btn>
                 </template>
 
                 <template v-slot:append class="padding-5">
@@ -29,6 +33,7 @@ const showLoginButton = computed(() => route.name === 'login' || route.name === 
                         Registro como conductor
                     </v-btn>
                 </template>
+
             </v-app-bar>
 
             <v-main>
@@ -36,6 +41,7 @@ const showLoginButton = computed(() => route.name === 'login' || route.name === 
                     <router-view></router-view>
                 </v-container>
             </v-main>
+            
         </v-layout>
     </v-card>
 </template>

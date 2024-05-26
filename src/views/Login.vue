@@ -1,88 +1,113 @@
 <script setup>
-import { useForm, useField } from 'vee-validate'
-import { ref } from 'vue' // Asegúrate de importar ref de 'vue'
-import { useRouter } from 'vue-router' // Importa useRouter de vue-router
-
+import { useForm, useField } from "vee-validate";
+import { ref } from "vue"; // Asegúrate de importar ref de 'vue'
+import { useRouter } from "vue-router"; // Importa useRouter de vue-router
 
 // regla para validar
-import { loginSchema as validationSchema } from '../validation/loginSchema'
+import { loginSchema as validationSchema } from "../validation/loginSchema";
 
-const { handleSubmit } = useForm({ validationSchema })
+const { handleSubmit } = useForm({ validationSchema });
 
-const phone = useField('phone')
-const password = useField('password')
-const isSmsRequested = ref(false)
-const router = useRouter() // Usa useRouter para obtener el enrutador
-
-
+const router = useRouter();
+const phone = useField("phone");
+const isSmsRequested = ref(false);
+const telefonoIngresado = ref("");
 
 const submit = handleSubmit(() => {
-
-  isSmsRequested.value = true
-})
+  isSmsRequested.value = true;
+  telefonoIngresado.value = phone.value.value;
+});
 
 const handleLogin = () => {
+  isSmsRequested.value = true;
 
-  isSmsRequested.value = true
-
-  router.push({ name: 'home' }) // Redirige programáticamente
-
-
-}
-
-
+  router.push({ name: "home" }); // Redirige programáticamente
+};
 </script>
 
 <template>
-  <v-card class="cotainer-login" max-height="800" flat>
-
+  <v-card class="container-login" max-height="800" flat>
     <div class="background-image-container">
-      <img src="/FondoLogin.jpg" class="background-image" alt="Background image" />
+      <img
+        src="/FondoLogin.jpg"
+        class="background-image"
+        alt="Background image"
+      />
     </div>
 
-    <div class="cotainer-loginInfo">
+    <div class="container-loginInfo">
       <v-card-title class="text-h4 font-weight-bold">
-        Inicar Sesion
+        Iniciar Sesión
       </v-card-title>
 
-      <v-card-subtitle class="text-h6 font-weight-bold">
-        Ingrese su contraseña y telefono
-      </v-card-subtitle>
+      <v-card-title class="text-h6 font-weight-bold text-black">
+        Ingrese su teléfono
+      </v-card-title>
 
       <v-form class="mt-5 text-center">
-
-        <v-text-field type="phone" label="Telefono" variant="solo-filled" class="labelRegistro"
-          placeholder="Ejemplo: 8777 5410" v-model="phone.value.value" :error-messages="phone.errorMessage.value">
-
+        <v-text-field
+          type="phone"
+          label="Teléfono"
+          variant="solo-filled"
+          class="labelRegistro"
+          placeholder="Ejemplo: 8777 5410"
+          v-model="phone.value.value"
+          :error-messages="phone.errorMessage.value"
+        >
         </v-text-field>
 
-        <v-text-field type="password" label="CodigoSMS" variant="solo-filled" class="labelRegistro"
-          v-model="password.value.value" :error-messages="password.errorMessage.value">
-
-        </v-text-field>
-
-        <v-card-subtitle class="subTitleRegistro">
-          <v-btn size="small" :to="{ name: 'registroUsuario' }" variant="plain"> Toque para registrarse </v-btn>
-        </v-card-subtitle>
-
-        <v-btn elevation="4" class="btn-login" @click="submit">
-          Solicitar SMS
-        </v-btn>
-
-        <v-btn elevation="4" class="btn-login" :disabled="!isSmsRequested" @click="handleLogin">
-          Ingresar
-        </v-btn>
-
+        <div class="contenedor-btnSolicitar">
+          <v-btn elevation="4" class="btn-login" @click="submit">
+            Solicitar SMS
+          </v-btn>
+        </div>
       </v-form>
 
+      <v-card-title class="text-h6 font-weight-bold">
+        Ingrese el código enviado
+      </v-card-title>
 
+      <!-- Segundo form -->
+      <v-form class="mt-5 text-center">
+        <v-text-field
+          type="phone"
+          class="labelRegistro"
+          variant="solo-filled"
+          v-model="telefonoIngresado"
+          readonly
+        />
 
+        <v-text-field
+          type="password"
+          label="Código SMS"
+          variant="solo-filled"
+          class="labelRegistro"
+        >
+        </v-text-field>
+
+        <div class="contenedor-btn">
+          <v-btn
+            size="small"
+            :to="{ name: 'registroUsuario' }"
+            class="btn-registro"
+          >
+            Toque para registrarse
+          </v-btn>
+
+          <v-btn
+            elevation="4"
+            class="btn-ingresar"
+            :disabled="!isSmsRequested"
+            @click="handleLogin"
+          >
+            Ingresar
+          </v-btn>
+        </div>
+      </v-form>
     </div>
-
   </v-card>
 </template>
 
-
 <style scoped>
-@import '../CSS/stylesLogin.css';
+@import "../Style/stylesLogin.css";
 </style>

@@ -1,0 +1,97 @@
+.homeMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.imgOpcion {
+    width: 35vw;
+    max-width: 250px;
+}
+
+.opPassenger,
+.opDriver {
+    width: 100%;
+    max-width: 600px;
+    height: 50vw;
+    max-height: 300px;
+    background-color: #d6f3de;
+    display: flex;
+    padding: 5%;
+    justify-content: center;
+    align-items: center;
+}
+
+.opPassenger:hover {
+    background-color: #93ddaa;
+}
+
+.opDriver {
+    background-color: #829acb;
+}
+
+.opDriver:hover {
+    background-color: #3056ad;
+}
+
+.button-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 780px) {
+    .imgOpcion {
+        width: 60vw;
+        max-width: 200px;
+    }
+
+    .opPassenger,
+    .opDriver {
+        height: 80vw;
+        max-height: 240px;
+        padding: 2%;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 781px) and (max-width: 1200px) {
+    .imgOpcion {
+        width: 50vw;
+        max-width: 220px;
+    }
+
+    .opPassenger,
+    .opDriver {
+        height: 50vw;
+    }
+}
+
+@media (min-width: 1201px) {
+    .homeMenu {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .imgOpcion {
+        max-width: 300px;
+    }
+
+    .opPassenger,
+    .opDriver {
+        width: 45%;
+        height: 400px;
+        max-height: 400px;
+    }
+}

@@ -13,8 +13,8 @@ export const loginSchema = {
         }
         return true;
     },
-    password(value) {
-        if (value) return true
-        return 'El Password es Obligatorio'
-    }
+    // password(value) {
+    //     if (value) return true
+    //     return 'El Password es Obligatorio'
+    // }
 }
