@@ -1,28 +1,37 @@
 <script setup>
 import { useForm, useField } from "vee-validate";
-import { ref } from "vue"; // Asegúrate de importar ref de 'vue'
-import { useRouter } from "vue-router"; // Importa useRouter de vue-router
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { solicitarSMSSchema, ingresarSchema } from "../validation/ValidationSchema";
 
-// regla para validar
-import { loginSchema as validationSchema } from "../validation/loginSchema";
-
-const { handleSubmit } = useForm({ validationSchema });
+const phone = useField("phone", solicitarSMSSchema.phone);
+const sms = useField("sms", ingresarSchema.sms);
 
 const router = useRouter();
-const phone = useField("phone");
+
 const isSmsRequested = ref(false);
+const isLabelRequested = ref(true)
 const telefonoIngresado = ref("");
 
-const submit = handleSubmit(() => {
-  isSmsRequested.value = true;
-  telefonoIngresado.value = phone.value.value;
-});
 
-const handleLogin = () => {
-  isSmsRequested.value = true;
+const handleSubmitSolicitar = async () => {
 
-  router.push({ name: "home" }); // Redirige programáticamente
+    isSmsRequested.value = true;
+    isLabelRequested.value = false;
+    telefonoIngresado.value = phone.value;
+
 };
+
+const handleSubmitIngresar = async () => {
+  // const { errors } = await sms.validate();
+  // if (!errors) {
+  
+  // }
+
+  isSmsRequested.value = true;
+    router.push({ name: "home" });
+};
+
 </script>
 
 <template>
@@ -36,13 +45,13 @@ const handleLogin = () => {
     </div>
 
     <div class="container-loginInfo">
-      <v-card-title class="text-h4 font-weight-bold">
-        Iniciar Sesión
-      </v-card-title>
+      <h3 class="text-h4 font-weight-bold">
+        Inicio de sesión
+      </h3>
 
-      <v-card-title class="text-h6 font-weight-bold text-black">
+      <h3 class="text-h10 font-weight-bold text-black">
         Ingrese su teléfono
-      </v-card-title>
+      </h3>
 
       <v-form class="mt-5 text-center">
         <v-text-field
@@ -53,19 +62,21 @@ const handleLogin = () => {
           placeholder="Ejemplo: 8777 5410"
           v-model="phone.value.value"
           :error-messages="phone.errorMessage.value"
+          :disabled="!isLabelRequested"
+
         >
         </v-text-field>
 
-        <div class="contenedor-btnSolicitar">
-          <v-btn elevation="4" class="btn-login" @click="submit">
+        <div class="contenedor-btnSolicitar mt-5">
+          <v-btn elevation="4" class="btn-login" @click="handleSubmitSolicitar">
             Solicitar SMS
           </v-btn>
         </div>
       </v-form>
 
-      <v-card-title class="text-h6 font-weight-bold">
+      <h3 class="text-h10 font-weight-bolod mt-5">
         Ingrese el código enviado
-      </v-card-title>
+      </h3>
 
       <!-- Segundo form -->
       <v-form class="mt-5 text-center">
@@ -73,32 +84,35 @@ const handleLogin = () => {
           type="phone"
           class="labelRegistro"
           variant="solo-filled"
-          v-model="telefonoIngresado"
+          v-model="phone.value.value"
           readonly
         />
 
         <v-text-field
-          type="password"
+          type="sms"
           label="Código SMS"
           variant="solo-filled"
           class="labelRegistro"
+          v-model="sms.value.value"
+          :error-messages="sms.errorMessage.value"
+    
         >
         </v-text-field>
 
-        <div class="contenedor-btn">
+        <div class="contenedor-btn mt-5">
           <v-btn
             size="small"
             :to="{ name: 'registroUsuario' }"
             class="btn-registro"
           >
-            Toque para registrarse
+            Registrarse
           </v-btn>
 
           <v-btn
             elevation="4"
             class="btn-ingresar"
             :disabled="!isSmsRequested"
-            @click="handleLogin"
+            @click="handleSubmitIngresar"
           >
             Ingresar
           </v-btn>

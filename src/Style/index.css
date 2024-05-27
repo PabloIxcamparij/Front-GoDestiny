@@ -1,0 +1,19 @@
+h3 {
+    font-size: 1.2em;
+    word-wrap: break-word;
+
+}
+
+@media (max-width: 780px) {
+
+    h3 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 350px) {
+    h3 {
+        font-size: 0.8em;
+    }
+
+}

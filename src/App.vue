@@ -5,7 +5,9 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
+// Definición de la propiedad isAuthRoute
 const isAuthRoute = computed(() => route.name === 'login' || route.name === 'registroUsuario')
+
 const showLoginButton = computed(() => route.name === 'login' || route.name === 'registroUsuario')
 
 </script>
@@ -16,22 +18,20 @@ const showLoginButton = computed(() => route.name === 'login' || route.name === 
             <v-app-bar color="blue-grey-darken-4">
                 <template v-slot:prepend>
                     <v-btn :to="{ name: 'login' }" v-if="showLoginButton">
-                        Iniciar Sesión
+                        <h3> Inicio sesión</h3>
                     </v-btn>
 
                     <v-btn :to="{ name: 'login' }" v-if="!isAuthRoute">
-                        Cerrar Sesión
+                        <h3> Cerrar sesión</h3>
                     </v-btn>
                 </template>
 
                 <template v-slot:append class="padding-5">
                     <v-btn :to="{ name: 'home' }" v-if="!isAuthRoute">
-                        Home
+                        <h3>Home</h3>
                     </v-btn>
 
-                    <v-btn :to="{ name: 'registroConductor' }" v-if="!isAuthRoute">
-                        Registro como conductor
-                    </v-btn>
+
                 </template>
 
             </v-app-bar>
@@ -45,3 +45,9 @@ const showLoginButton = computed(() => route.name === 'login' || route.name === 
         </v-layout>
     </v-card>
 </template>
+
+
+<style scoped>
+
+@import "./Style/index.css";
+</style>

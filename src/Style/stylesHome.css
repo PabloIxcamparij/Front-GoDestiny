@@ -1,13 +1,12 @@
-.homeMenu {
+
+.button-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    padding: 20px;
 }
 
 .imgOpcion {
-    width: 35vw;
+    width: 135%;
     max-width: 250px;
 }
 
@@ -15,7 +14,7 @@
 .opDriver {
     width: 100%;
     max-width: 600px;
-    height: 50vw;
+    height: 80vw;
     max-height: 300px;
     background-color: #d6f3de;
     display: flex;
@@ -36,19 +35,25 @@
     background-color: #3056ad;
 }
 
-.button-content {
-    text-align: center;
+.conteinerDriver{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    gap: 20px;
+
 }
 
-h3 {
-    font-size: 1.5rem;
-}
+/* 
+.homeMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+} */
 
-@media (max-width: 780px) {
+
+/* @media (max-width: 780px) {
     .imgOpcion {
         width: 60vw;
         max-width: 200px;
@@ -59,10 +64,6 @@ h3 {
         height: 80vw;
         max-height: 240px;
         padding: 2%;
-    }
-
-    h3 {
-        font-size: 1rem;
     }
 }
 
@@ -94,4 +95,4 @@ h3 {
         height: 400px;
         max-height: 400px;
     }
-}
+} */
