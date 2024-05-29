@@ -50,4 +50,5 @@ const showLoginButton = computed(() => route.name === 'login' || route.name === 
 <style scoped>
 
 @import "./Style/index.css";
+
 </style>

@@ -27,6 +27,21 @@ const router = createRouter({
         path: '/RegistroConductor',
         name: 'registroConductor',
         component: () => import('../views/RegistroConductor.vue'),
+      },
+      {
+        path: '/SolicitarViaje',
+        name: 'solicitarViaje',
+        component: () => import('../views/SolicitarViaje.vue'),
+      },  
+      {
+        path: '/EmpezarConducir',
+        name: 'empezarConducir',
+        component: () => import('../views/EmpenzarConducir.vue'),
+      },  
+      {
+        path: '/GestionarViaje',
+        name: 'gestionarViaje',
+        component: () => import('../views/GestionarViaje.vue'),
       },  
     ]
   }) 

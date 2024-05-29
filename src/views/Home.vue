@@ -32,8 +32,7 @@
 </style>
 
 <template>
-  <v-tabs v-model="tab" align-tabs="center" color="green-darken-1
-  ">
+  <v-tabs v-model="tab" align-tabs="center" color="green-darken-1">
     <v-tab value="one">
       <h3> Pasajero</h3>
     </v-tab>
@@ -51,15 +50,17 @@
 
         <v-row justify="center">
           <v-col cols="12" md="6">
-            <v-btn elevation="4" class="opPassenger">
+
+            <v-btn elevation="4" class="opPassenger" :to="{ name: 'solicitarViaje' }">
               <div class="button-content">
                 <img src="/Pasajero.svg" class="imgOpcion" />
                 <h3>Empezar El Viaje</h3>
               </div>
             </v-btn>
+
           </v-col>
         </v-row>
-
+        
       </v-container>
 
     </v-tabs-window-item>
@@ -73,9 +74,9 @@
             <div class="conteinerDriver">
 
 
-              <v-btn elevation="4" class="opDriver">
+              <v-btn elevation="4" class="opDriver" :to="{ name: 'empezarConducir' }">
                 <div class="button-content">
-                  <img src="/Conductor.svg" class="imgOpcion" :to="{ name: 'registroConductor' }" />
+                  <img src="/Conductor.svg" class="imgOpcion" />
                   <h3>Empezar A Conducir</h3>
                 </div>
               </v-btn>

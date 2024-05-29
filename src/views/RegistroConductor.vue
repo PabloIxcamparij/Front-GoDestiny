@@ -71,7 +71,7 @@ const decrementCantidadPasajeros = () => {
         <h3 class="text-h10 font-weight-bold">
           Cantidad de pasajeros
         </h3>
-        <v-text-field type="cantidadPasajeros" class="labelRegistro mt-5" :value="cantidadPasajeros.value.value"
+        <v-text-field  variant="solo-inverted" type="cantidadPasajeros" class="labelRegistro mt-5" :value="cantidadPasajeros.value.value"
           :error-messages="cantidadPasajeros.errorMessage.value" readonly>
           <template #append>
             <v-btn icon @click="decrementCantidadPasajeros">
