@@ -19,7 +19,7 @@ npm install vee-validate
 
 # Añadir en el main.js
 
-// Vuetify
+// Vuetifya
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
