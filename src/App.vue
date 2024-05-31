@@ -5,7 +5,9 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
-// Definición de la propiedad isAuthRoute
+// Definición de la propiedad de josito
+
+
 const isAuthRoute = computed(() => route.name === 'login' || route.name === 'registroUsuario')
 
 const showLoginButton = computed(() => route.name === 'login' || route.name === 'registroUsuario')
