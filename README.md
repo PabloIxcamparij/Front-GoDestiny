@@ -16,6 +16,10 @@ npm install vuetify
 npm install pinia
 npm install vue-router
 npm install vee-validate
+npm install axios
+npm install sweetalert2
+npm install -D @fawmi/vue-google-maps
+npm add @vue/devtools-api
 
 # Añadir en el main.js
 
@@ -31,3 +35,18 @@ const vuetify = createVuetify({
 })
 
 createApp(App).use(vuetify).mount('#app')
+
+
+// GoogleMaps en el main
+https://vue-map.netlify.app/components/autocomplete.html
+
+import { createApp } from 'vue'
+import VueGoogleMaps from '@fawmi/vue-google-maps'
+
+const app = createApp(App);
+app.use(VueGoogleMaps, {
+    load: {
+        key: 'YOUR_API_KEY_COMES_HERE',
+    },
+}).mount('#app')
+

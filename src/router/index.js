@@ -42,7 +42,12 @@ const router = createRouter({
         path: '/GestionarViaje',
         name: 'gestionarViaje',
         component: () => import('../views/GestionarViaje.vue'),
-      },  
+      },
+      {
+        path: '/map',
+        name: 'map',
+        component: () => import('../views/MapView.vue'),
+      },
     ]
   }) 
 
