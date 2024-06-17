@@ -99,11 +99,9 @@ const handleLocationChanged = (e) => {
 const handleCreateTravel = () => {
 
     const formData = {
-        conductor: 118760258,
         pasajero: 12345678,
         ubicacionPasajero: JSON.stringify(location.current.geometry), // Convierte los objetos geometry a strings
         ubicacionDestino: JSON.stringify(location.destination.geometry), // Convierte los objetos geometry a strings
-        estado: false
     }
 
     axios.post('http://localhost:8000/api/travel', formData)
