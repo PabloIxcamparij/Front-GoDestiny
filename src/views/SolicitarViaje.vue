@@ -2,10 +2,10 @@
     <div class="pt-16">
 
         <h3 class="text-h5 font-weight-bold title">¿Dónde vamos?</h3>
-        
+
         <form action="#">
             <div class="overflow-hidden shadow sm:rounded-md max-w-sm mx-auto text-left">
-                
+
                 <div class="bg-white px-4 py-5 sm:p-6">
                     <div>
                         <GMapAutocomplete placeholder="Destino" @place_changed="handleLocationChanged"
@@ -29,7 +29,7 @@
             <h1 class="text-3xl font-semibold mb-4">¿Este es su destino?</h1>
 
             <div class="overflow-hidden shadow sm:rounded-md max-w-sm mx-auto text-left">
-                
+
                 <div>
                     <GMapMap :zoom='11' :center="location.destination.geometry" ref="gMap"
                         style="width: 100%; height: 256px;">
@@ -59,14 +59,19 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useRouter } from "vue-router";
 import { useCounterStore } from '../stores/counter';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
+const router = useRouter();
 
 const location = useCounterStore();
 const gMap = ref(null);
 const showMap = ref(false);
+const travel = ref(false)
+
+const telefonoPasajero = 12345678;
 
 const handleLocationChanged = (e) => {
     console.log('Location changed:', e);
@@ -99,7 +104,7 @@ const handleLocationChanged = (e) => {
 const handleCreateTravel = () => {
 
     const formData = {
-        pasajero: 12345678,
+        pasajero: telefonoPasajero,
         ubicacionPasajero: JSON.stringify(location.current.geometry), // Convierte los objetos geometry a strings
         ubicacionDestino: JSON.stringify(location.destination.geometry), // Convierte los objetos geometry a strings
     }
@@ -111,7 +116,13 @@ const handleCreateTravel = () => {
                 'El viaje ha sido creado exitosamente',
                 'success'
             );
-            // Aquí puedes redirigir a otra página o realizar alguna acción después de crear el usuario
+
+            travel.value = response.data.viaje.id
+            console.log(travel.value);
+
+            // Realiza la navegación a la ruta esperandoConductor con el parámetro id
+            router.push({ name: 'esperandoConductor', params: { id: travel.value } });
+
         })
         .catch(error => {
             Swal.fire(
@@ -122,7 +133,6 @@ const handleCreateTravel = () => {
 
             console.log(error.response.data.message)
         });
-
 }
 
 const handleSelectLocation = async () => {

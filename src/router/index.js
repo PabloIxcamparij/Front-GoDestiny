@@ -44,9 +44,9 @@ const router = createRouter({
         component: () => import('../views/GestionarViaje.vue'),
       },
       {
-        path: '/map',
-        name: 'map',
-        component: () => import('../views/MapView.vue'),
+        path: '/esperandoConductor/:id',
+        name: 'esperandoConductor',
+        component: () => import('../views/EsperandoConductor.vue'),
       },
     ]
   }) 
